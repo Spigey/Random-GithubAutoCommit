@@ -20,7 +20,7 @@ public class index {
         scanner.nextLine();
         ques("Automatically push? (y/n)");
         boolean autoPush = scanner.nextLine().equalsIgnoreCase("y");
-        ques("Delay before commiting again");
+        ques("Delay before committing again");
         int delay = scanner.nextInt();
         scanner.nextLine();
         ques("Enable super fast mode? (y/n)");
@@ -64,7 +64,7 @@ public class index {
             }
         }
 
-        println(Colors.GREEN + "Commited " + commitCount + " times! " + Colors.RS);
+        println(Colors.GREEN + "Committed " + commitCount + " times! " + Colors.RS);
         if(autoPush) println(Colors.BLUE + "Pushing..." + Colors.RS);
 
         if (autoPush) {
