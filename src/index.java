@@ -28,10 +28,11 @@ public class index {
 
         int days = (int) TimeUnit.MILLISECONDS.toDays((long) delay * commitCount);
         long remaining = ((long) delay * commitCount) - TimeUnit.DAYS.toMillis(days);
-        int hours = (int) (remaining / TimeUnit.MILLISECONDS.toHours(1));
-        remaining %= TimeUnit.HOURS.toMillis(1);
-        int minutes = (int) (remaining / TimeUnit.MINUTES.toMillis(1));
-        int seconds = (int) (remaining / TimeUnit.SECONDS.toMillis(1));
+        int hours = (int) TimeUnit.MILLISECONDS.toHours(remaining);
+        remaining -= TimeUnit.HOURS.toMillis(hours);
+        int minutes = (int) TimeUnit.MILLISECONDS.toMinutes(remaining);
+        remaining -= TimeUnit.MINUTES.toMillis(minutes);
+        int seconds = (int) TimeUnit.MILLISECONDS.toSeconds(remaining);
         System.out.printf("Committing " + commitCount + " times...\nThis will take approximately %d days, %d hours, %d minutes and %d seconds.\n\n\n\n", days, hours, minutes, seconds);
 
         for (int i = 0; i < commitCount; i++) {
