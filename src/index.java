@@ -17,7 +17,7 @@ public class index {
         int commitCount = scanner.nextInt();
         scanner.nextLine();
         ques("Automatically push? (y/n)");
-        String autoPush = scanner.nextLine().toLowerCase();
+        boolean autoPush = scanner.nextLine().equalsIgnoreCase("y");
         ques("Delay before commiting again");
         int delay = scanner.nextInt();
         System.out.println("Committing " + commitCount + " times...");
@@ -33,9 +33,10 @@ public class index {
             }
         }
 
-        println(Colors.GREEN + "Commited " + commitCount + " times! Pushing..." + Colors.RS);
+        println(Colors.GREEN + "Commited " + commitCount + " times! " + Colors.RS);
+        if(autoPush) println(Colors.BLUE + "Pushing..." + Colors.RS);
 
-        if (autoPush.equals("y")) {
+        if (autoPush) {
             try {
                 Runtime.getRuntime().exec(new String[]{"git", "push"});
                 System.out.println(Colors.BLUE + "Pushed all commits to GitHub!" + Colors.RS);
